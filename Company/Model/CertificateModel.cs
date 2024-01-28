@@ -7,7 +7,5 @@ namespace Company.Model
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public int UserId { get; set; }
-
-
     }  
 }

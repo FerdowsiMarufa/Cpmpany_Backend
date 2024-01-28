@@ -4,6 +4,7 @@ using Company.Model;
 using Company.Model.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -51,7 +52,7 @@ namespace Company.Controllers
                     }
 
                     // Check if the employee already has a certificate
-                    if (existingEmployee.CertificateId != null)
+                    if (existingEmployee.CertificateId != 0)
                     {
                         // Handle the case where the employee already has a certificate
                         ModelState.TryAddModelError("CustomError", "Employee already has a certificate");
@@ -84,6 +85,74 @@ namespace Company.Controllers
                     return BadRequest(ModelState);
                 }
             }
+
+
+        [HttpGet("employeesWithCertificate")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<IEnumerable<EmployeeWithCertificateDto>> GetEmployeesWithCertificate(int userId = default)
+        {
+            try
+            {
+                // Query employees with certificates
+                var employeesWithCertificate = _db.Employees
+                    .Join(_db.Certificates,
+                        e => e.CertificateId,
+                        c => c.Id,
+                        (e, c) => new { Employee = e, Certificate = c })
+                    .Where(ec => userId == default || ec.Certificate.UserId == userId)
+                    .Select(ec => new EmployeeWithCertificateDto
+                    {
+                        Id = ec.Employee.Id,
+                        Name = ec.Employee.Name,
+                        DepartmentId = ec.Employee.DepartmentId,
+                        CertificateId = ec.Employee.CertificateId
+                    })
+                    .ToList();
+
+                return Ok(employeesWithCertificate);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                ModelState.TryAddModelError("CustomError", "Failed to retrieve employees with certificates");
+                return BadRequest(ModelState);
+            }
+        }
+
+
+        //[HttpGet("employeesWithCertificate")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //public ActionResult<IEnumerable<EmployeeWithCertificateDto>> GetEmployeesWithCertificate(int userId)
+        //{
+        //    try
+        //    {
+        //        // Query employees with certificates for a specific userId
+        //        var employeesWithCertificate = _db.Employees
+        //            .Join(_db.Certificates,
+        //                e => e.CertificateId,
+        //                c => c.Id,
+        //                (e, c) => new { Employee = e, Certificate = c })
+        //            .Where(ec => ec.Certificate.UserId == userId)
+        //            .Select(ec => new EmployeeWithCertificateDto
+        //            {
+        //                Id = ec.Employee.Id,
+        //                Name = ec.Employee.Name,
+        //                DepartmentId = ec.Employee.DepartmentId,
+        //                CertificateId = ec.Employee.CertificateId
+        //            })
+        //            .ToList();
+
+        //        return Ok(employeesWithCertificate);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception
+        //        ModelState.TryAddModelError("CustomError", "Failed to retrieve employees with certificates");
+        //        return BadRequest(ModelState);
+        //    }
+        //}
 
     }
 }

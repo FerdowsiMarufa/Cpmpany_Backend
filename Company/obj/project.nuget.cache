@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8gY3dFRQNY3NscwgnorFlb4O3VC7pd7p83u3SjpAucluA9aMeg4joHIAlYc1mgtihWCkurcY897pHpQzwUxpDw==",
+  "dgSpecHash": "Dg5qR1WkZEJGFb6r41kfhE3NfLQ6DT+zkZXQPjsX57s0OoWgpq4NXFoCkaMDuH8epbxtQrqCoqZdxbnNFlA1kQ==",
   "success": true,
-  "projectFilePath": "F:\\assessment\\Company\\Company\\Company.csproj",
+  "projectFilePath": "F:\\assessment\\update\\Company\\Company\\Company.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Marufa\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Marufa\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.1.1\\automapper.extensions.microsoft.dependencyinjection.6.1.1.nupkg.sha512",

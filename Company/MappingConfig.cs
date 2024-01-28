@@ -10,7 +10,9 @@ namespace Company
           CreateMap<User , UserDto>().ReverseMap();
             CreateMap<User, LoginDto>().ReverseMap();
             CreateMap<UserDto, LoginDto>().ReverseMap();
+            CreateMap<EmployeeModel, EmployeeWithCertificateDto>().ReverseMap();
         }
 
     }
 }
+

@@ -5060,11 +5060,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\assessment\\Company\\Company\\Company.csproj",
+      "projectUniqueName": "F:\\assessment\\update\\Company\\Company\\Company.csproj",
       "projectName": "Company",
-      "projectPath": "F:\\assessment\\Company\\Company\\Company.csproj",
+      "projectPath": "F:\\assessment\\update\\Company\\Company\\Company.csproj",
       "packagesPath": "C:\\Users\\Marufa\\.nuget\\packages\\",
-      "outputPath": "F:\\assessment\\Company\\Company\\obj\\",
+      "outputPath": "F:\\assessment\\update\\Company\\Company\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Marufa\\AppData\\Roaming\\NuGet\\NuGet.Config",

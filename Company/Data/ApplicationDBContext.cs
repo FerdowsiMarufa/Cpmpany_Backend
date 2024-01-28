@@ -1,4 +1,5 @@
 ﻿using Company.Model;
+using Company.Model.Dto;
 using Microsoft.EntityFrameworkCore;
 
 namespace Company.Data
@@ -12,6 +13,6 @@ namespace Company.Data
         public DbSet<EmployeeModel> Employees { get; set; }
         public DbSet<DepartmentModel> Departments { get; set; }
         public DbSet<CertificateModel> Certificates { get; set; }
-  
+      
     }
 }
